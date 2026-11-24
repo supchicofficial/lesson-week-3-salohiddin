@@ -1,0 +1,26 @@
+{% extends "manager/base.html" %}
+{% block title %}{% if task %}Edit task{% else %}New task{% endif %}{% endblock %}
+{% block content %}
+<div class="card form-card">
+    <h1>{% if task %}Edit task{% else %}New task{% endif %}</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label>Title
+            <input type="text" name="title" value="{{ task.title|default:'' }}" maxlength="200" required>
+        </label>
+        <label>Description
+            <textarea name="description" rows="5">{{ task.description|default:'' }}</textarea>
+        </label>
+        {% if task %}
+        <label>
+            <input type="checkbox" name="done" {% if task.done %}checked{% endif %}>
+            Task is done
+        </label>
+        {% endif %}
+        <div class="form-actions">
+            <a class="button secondary" href="{% url 'task-list' %}">Cancel</a>
+            <button class="button" type="submit">Save task</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

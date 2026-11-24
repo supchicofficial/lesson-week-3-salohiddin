@@ -1,0 +1,8 @@
+{% extends "manager/base.html" %}
+{% block content %}
+<div class="auth-card card">
+    <h1>Invalid link</h1>
+    <p>This confirmation link is invalid or has expired.</p>
+    <a href="{% url 'register' %}">Register again</a>
+</div>
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends "manager/base.html" %}
+{% block title %}Register{% endblock %}
+{% block content %}
+<div class="auth-card card">
+    <h1>Create account</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.non_field_errors }}
+        <label>Username
+            <input type="text" name="username" value="{{ form.username.value|default:'' }}" required>
+        </label>
+        {{ form.username.errors }}
+        <label>Email
+            <input type="email" name="email" value="{{ request.POST.email|default:'' }}" required>
+        </label>
+        {{ form.email.errors }}
+        <label>Password
+            <input type="password" name="password1" required>
+        </label>
+        {{ form.password1.errors }}
+        <label>Confirm password
+            <input type="password" name="password2" required>
+        </label>
+        {{ form.password2.errors }}
+        <button class="button" type="submit">Register</button>
+    </form>
+    <p>Already have an account? <a href="{% url 'login' %}">Login</a></p>
+</div>
+{% endblock %}

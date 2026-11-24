@@ -1,0 +1,27 @@
+{% extends "manager/base.html" %}
+{% block title %}My tasks{% endblock %}
+{% block content %}
+<div class="page-header">
+    <h1>My tasks</h1>
+    <a class="button" href="{% url 'task-create' %}">+ New task</a>
+</div>
+
+<div class="task-grid">
+    {% for task in tasks %}
+        <div class="task-card card">
+            <h2>{% if task.done %}<s>{{ task.title }}</s>{% else %}{{ task.title }}{% endif %}</h2>
+            {% if task.description %}<p>{{ task.description }}</p>{% endif %}
+            <p>Status: {% if task.done %}Done{% else %}Not done{% endif %}</p>
+            <div class="task-actions">
+                <a href="{% url 'task-edit' task.pk %}">Edit</a>
+                <a class="danger" href="{% url 'task-delete' task.pk %}">Delete</a>
+            </div>
+        </div>
+    {% empty %}
+        <div class="empty card">
+            <h2>No tasks found</h2>
+            <p>Create a task or change the filters.</p>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

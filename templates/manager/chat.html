@@ -1,0 +1,24 @@
+{% extends "manager/base.html" %}
+{% block title %}Chat{% endblock %}
+{% block content %}
+<div class="card form-card">
+    <h1>Chat</h1>
+    <div class="chat-messages">
+        {% for message in messages %}
+            <div class="chat-message">
+                <span>{{ message.user.username }}</span>
+                <p>{{ message.text }}</p>
+            </div>
+        {% empty %}
+            <p>No messages yet.</p>
+        {% endfor %}
+    </div>
+    <form method="post">
+        {% csrf_token %}
+        <label>Message
+            <input type="text" name="text" maxlength="500" required>
+        </label>
+        <button class="button" type="submit">Send</button>
+    </form>
+</div>
+{% endblock %}

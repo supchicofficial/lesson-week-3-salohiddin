@@ -1,0 +1,110 @@
+:root {
+    --ink: #172033;
+    --muted: #697386;
+    --line: #dde3ed;
+    --surface: #ffffff;
+    --primary: #5b5bd6;
+    --danger: #b42318;
+}
+* { box-sizing: border-box; }
+body {
+    margin: 0;
+    font-family: Inter, system-ui, -apple-system, sans-serif;
+    color: var(--ink);
+    background: #f5f7fb;
+}
+.nav {
+    padding: 15px;
+    background: var(--surface);
+    border-bottom: 1px solid var(--line);
+    text-align: center;
+}
+.nav a {
+    color: var(--ink);
+    font-weight: bold;
+    text-decoration: none;
+}
+.nav span {
+    margin: 0 10px;
+}
+.nav form {
+    display: inline;
+}
+.nav button {
+    border: 0;
+    background: none;
+    color: var(--primary);
+    cursor: pointer;
+}
+.container { width: min(1100px, 86%); margin: 44px auto; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; box-shadow: 0 8px 24px rgba(23,32,51,.05); }
+.page-header { display: flex; justify-content: space-between; align-items: end; margin-bottom: 24px; }
+.eyebrow { margin: 0 0 4px; color: var(--muted); text-transform: uppercase; font-size: .75rem; letter-spacing: .12em; }
+h1, h2, p { margin-top: 0; }
+.button {
+    display: inline-flex; justify-content: center; align-items: center;
+    min-height: 42px; padding: 10px 16px; border: 0; border-radius: 8px;
+    background: var(--primary); color: white; text-decoration: none; font-weight: 700; cursor: pointer;
+}
+.button.secondary { background: #edf0f7; color: var(--ink); }
+.link-button { border: 0; background: none; color: var(--primary); cursor: pointer; font-weight: 700; }
+.filters { display: grid; grid-template-columns: minmax(180px, 1fr) 180px 180px auto; gap: 10px; margin-bottom: 20px; }
+input, select, textarea {
+    width: 100%; border: 1px solid var(--line); border-radius: 8px; background: white;
+    color: var(--ink); padding: 11px 12px; font: inherit;
+}
+label { display: grid; gap: 7px; margin-bottom: 16px; font-weight: 700; }
+.task-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.task-card { padding: 18px; }
+.task-top { display: flex; justify-content: space-between; align-items: center; }
+.task-card h2 { margin: 16px 0 8px; font-size: 1.1rem; }
+.task-card p { color: var(--muted); line-height: 1.5; }
+.task-card time { color: var(--muted); font-size: .85rem; }
+.badge, .priority { border-radius: 999px; padding: 5px 9px; font-size: .75rem; font-weight: 800; }
+.status-todo { background: #eef0f5; }
+.status-in_progress { background: #fff1d6; color: #8a5600; }
+.status-done { background: #dcf8e7; color: #19713b; }
+.priority-low { color: #697386; }
+.priority-medium { color: #8a5600; }
+.priority-high { color: var(--danger); }
+.task-actions { display: flex; gap: 14px; margin-top: 18px; }
+.task-actions a { color: var(--primary); font-weight: 700; text-decoration: none; }
+.task-actions .danger { color: var(--danger); }
+.auth-card, .form-card { width: min(560px, 100%); margin: 20px auto; padding: 28px; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.form-actions { display: flex; justify-content: flex-end; gap: 10px; margin-top: 12px; }
+.delete-button { background: var(--danger); }
+.empty { grid-column: 1 / -1; padding: 40px; text-align: center; }
+.message { margin-bottom: 16px; padding: 12px 14px; border-radius: 8px; background: #eaf5ff; }
+.message.error { background: #fdecea; color: #9c2f24; }
+.message.success { background: #e7f7ed; color: #216b3b; }
+.auth-card p { margin: 20px 0 0; }
+.chat-messages {
+    max-height: 400px;
+    overflow-y: auto;
+    margin-bottom: 20px;
+}
+.chat-message {
+    padding: 12px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    background: #f5f7fb;
+}
+.chat-message span {
+    margin-left: 8px;
+    color: var(--muted);
+}
+.chat-message p {
+    margin: 6px 0 0;
+}
+@media (max-width: 800px) {
+    .container { width: 92%; margin-top: 24px; }
+    .task-grid { grid-template-columns: 1fr 1fr; }
+    .filters { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 520px) {
+    .nav { padding: 0 4%; }
+    .page-header { align-items: start; }
+    .task-grid, .form-row { grid-template-columns: 1fr; }
+    .filters { grid-template-columns: 1fr; }
+}
